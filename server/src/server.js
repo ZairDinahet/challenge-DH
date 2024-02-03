@@ -4,11 +4,20 @@ const { ClientError } = require('./utils/errors')
 
 const server = express();
 
+// Ruteadores
+
+const applicantsRoutes = require('./routes/applicantsRoutes')
+const professionsRoutes = require('./routes/professionsRoutes')
+
 server.use(express.json());
 server.use(morgan('dev'));
 
 server.use('/', require('./routes'));
 
+// Ruteos
+
+server.use('/applicants', applicantsRoutes)
+server.use('/professions', professionsRoutes)
 
 
 server.use('*', (req, res) => {
