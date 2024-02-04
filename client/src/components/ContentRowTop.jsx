@@ -1,15 +1,14 @@
 import React from 'react';
-import image from '../assets/img/logo-dh.png'
-//import ContentWrapper from './components/ContentWrapper';
+
 //import NotFound from './NotFound';
-//import {Link, Route, Routes} from 'react-router-dom';
+import {Link, Route, Routes} from 'react-router-dom';
 
 
 function contentRowTop(){
     return(
         <>
         {/* ========== Start CONTENT ========== */}
-      <main className="p-12 overflow-auto" style="grid-area: content;">
+      <main className="p-12 overflow-auto" style={{gridArea: 'content'}}>
         {/* ========== Start PREVENTA ========== */}
         <header>
           <h2 className="text-3xl text-stone-950">Búsqueda y selección</h2>

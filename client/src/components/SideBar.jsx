@@ -1,8 +1,7 @@
 import React from 'react';
 import image from '../assets/img/logo-dh.png'
-//import ContentWrapper from './components/ContentWrapper';
-//import NotFound from './NotFound';
-//import {Link, Route, Routes} from 'react-router-dom';
+import ContentWrapper from './ContentWrapper';
+import {Link, Route, Routes} from 'react-router-dom';
 
 
 function SideBar(){
@@ -11,7 +10,7 @@ function SideBar(){
         <>
            {/* ========== Start MENU ========== */}
       <header className="pb-12 overflow-auto bg-slate-50 border-r border-stone-400"
-      style="grid-area: menu;">
+      style = {{gridArea: 'menu'}}>
         {/* ========== Start LOGO ========== */}
         <figure className="h-20 flex items-center justify-start m-0 px-12">
           <div className="w-10 h-10 rounded-full overflow-hidden">
@@ -83,7 +82,7 @@ function SideBar(){
         </nav>
         {/* ========== End LISTADO ========== */}
       </header>
-        </>
+      </>
     )
 }
 export default SideBar;
