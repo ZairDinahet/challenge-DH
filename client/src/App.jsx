@@ -1,17 +1,22 @@
-import React from 'react';
 import SideBar from './components/SideBar';
-import ContentWrapper from './components/ContentWrapper';
+import { BrowserRouter } from 'react-router-dom';
 
 
 function App() {
 
   return (
-      <div id="wrapper">
-        <div>
+    <div >
+      <div className="grid w-full h-screen gap-0"
+        style={{
+          gridTemplateColumns: '300px auto',
+          gridTemplateRows: '80px auto',
+          gridTemplateAreas: "'menu search' 'menu content'"
+        }}>
+        <BrowserRouter>
           <SideBar />
-          <ContentWrapper />
-        </div>
+        </BrowserRouter>
       </div>
+    </div>
   )
 }
 

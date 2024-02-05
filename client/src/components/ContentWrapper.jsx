@@ -1,9 +1,7 @@
-import React from 'react';
-import TopBar from './TopBar';
 import ContentRowTop  from './ContentRowTop';
-import Footer  from './Footer';
+import Professions  from './Professions';
 //import NotFound from './NotFound';
-import {Link, Route, Routes} from 'react-router-dom';
+//import {Link, Route, Routes} from 'react-router-dom';
 
 
 function ContentWrapper(){
@@ -14,9 +12,8 @@ function ContentWrapper(){
             <div id="content-wrapper" className="d-flex flex-column">
                 {/*<!-- Main Content -->*/}
                 <div id="content">
-                    <TopBar />
                     <ContentRowTop />
-                    <Footer />
+                    <Professions />
                 </div>
             </div>
         </>
