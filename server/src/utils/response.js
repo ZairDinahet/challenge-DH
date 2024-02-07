@@ -1,6 +1,11 @@
-module.exports = (res, statusCode, data) => {
+module.exports = (res, req, statusCode, data) => {
   res.status(statusCode).json({
-    error: false,
-    data
+    meta: {
+      error: false,
+      count: data.length ? data.length : 1,
+      status: statusCode,
+      url: req.protocol + '://' + req.get('host') + req.url,
+    },
+    data: data,
   })
 }
