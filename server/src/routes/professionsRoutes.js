@@ -1,14 +1,11 @@
 // Módulos
-
 const express = require("express");
 const router = express.Router();
-
 // Controlador
-
-const professionsController = "../controllers/professionsController";
+const professionsController = require("../controllers/professionsController");
 
 // Rutas
 
-// router.get("/", professionsController.list);
+router.get("/professions", professionsController.getProfessions);
 
 module.exports = router;
