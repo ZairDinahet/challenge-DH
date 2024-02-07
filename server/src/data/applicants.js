@@ -5,7 +5,7 @@ module.exports = {
   list: async () => {
     const data  = await Applicant.findAll({
       include:[{
-        model: db.Profession,
+        model: Profession,
         as: 'professions',
         attributes: ['id','name'],
         through: {
