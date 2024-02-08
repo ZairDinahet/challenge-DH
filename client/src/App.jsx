@@ -6,12 +6,7 @@ function App() {
 
   return (
     <div >
-      <div className="grid w-full h-screen gap-0"
-        style={{
-          gridTemplateColumns: '300px auto',
-          gridTemplateRows: '80px auto',
-          gridTemplateAreas: "'menu search' 'menu content'"
-        }}>
+      <div className="flex w-full h-screen text-stone-400 bg-stone-50 text-base font-sans">
         <BrowserRouter>
           <SideBar />
         </BrowserRouter>

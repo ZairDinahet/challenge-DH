@@ -2,7 +2,7 @@ function Postulate(){
     return (
         <>
         {/* ========== Start  ========== */}
-        <section>
+        <section className="p-12 overflow-auto w-full">
           <div>Postular</div>
         </section>
         {/* ========== End  ========== */}    
