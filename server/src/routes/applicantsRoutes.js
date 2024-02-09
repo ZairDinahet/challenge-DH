@@ -6,10 +6,10 @@ const applicantsController = require("../controllers/applicantsController");
 
 // Rutas
 
-router.get("/applicants", applicantsController.getApplicants);
-router.delete("/applicants/:id", applicantsController.deleteApplicant);
-router.get("/applicants/:id", applicantsController.getOneApplicant);
-router.post("/applicants", applicantsController.postApplicant);
-router.put("/applicants/:id", applicantsController.putApplicant);
+router.get("/", applicantsController.getApplicants);
+router.delete("/:id", applicantsController.deleteApplicant);
+router.get("/:id", applicantsController.getOneApplicant);
+router.post("/", applicantsController.postApplicant);
+router.put("/:id", applicantsController.putApplicant);
 
 module.exports = router;

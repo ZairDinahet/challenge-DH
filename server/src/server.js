@@ -11,8 +11,8 @@ server.use(morgan('dev'));
 server.use(express.urlencoded({ extended: true }))
 
 // Ruteos
-server.use(applicantsRoutes)
-server.use(professionsRoutes)
+server.use('/applicants', applicantsRoutes)
+server.use('/professions', professionsRoutes)
 
 
 server.use('*', (req, res) => {
