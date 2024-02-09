@@ -6,6 +6,6 @@ const professionsController = require("../controllers/professionsController");
 
 // Rutas
 
-router.get("/professions", professionsController.getProfessions);
+router.get("/", professionsController.getProfessions);
 
 module.exports = router;

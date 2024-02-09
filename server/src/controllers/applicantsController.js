@@ -9,13 +9,13 @@ const getApplicants = async (req, res) => {
 
 const postApplicant = async (req, res) => {
   const applicant = await Applicants.create(req.body);
-  response(res, req, 200, applicant)
+  response(res, req, 201, applicant)
 }
 
 const deleteApplicant = async (req, res) => {
   const { id } = req.params;
-  const applicant = await Applicants.delete(id);
-  response(res, req, 200, applicant)
+  await Applicants.delete(id);
+  response(res, req, 204, [])
 }
 
 const getOneApplicant = async (req, res) => {
