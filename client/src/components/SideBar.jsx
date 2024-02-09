@@ -13,21 +13,23 @@ function SideBar() {
   return (
     <>
       {/* ========== Start MENU ========== */}
-      <header className="pb-12 bg-slate-50 border-r border-stone-300 w-1/5">
+      <header className="pb-12 h-auto bg-slate-50 border-r border-stone-300 w-1/5">
 
         {/* ========== Start LOGO ========== */}
-        <figure className="h-20 flex items-center justify-start m-0 px-10">
-          <div className="w-10 h-10 rounded-full">
-            <img
-              src={image}
-              alt="Logo Digital House"
-              className="block w-full h-full object-cover"
-            />
-          </div>
-          <figcaption className="m-0 pl-4 text-stone-950 font-bold text-sm">
-            Digital House
-          </figcaption>
-        </figure>
+            <Link to="/">
+              <figure className="h-20 flex items-center justify-start m-0 px-4">
+                <div className="hidden lg:block w-10 h-10 rounded-full">
+                  <img
+                    src={image}
+                    alt="Logo Digital House"
+                    className="hidden lg:block w-full h-full object-cover"
+                  />
+                </div>
+                <figcaption className="m-0 p-0 lg:pl-4 text-stone-950 font-bold text-sm">
+                  Digital House
+                </figcaption>
+              </figure>
+            </Link>
         {/* ========== End LOGO ========== */}
 
         {/* ========== Start BUSCADOR ========== */}
@@ -35,7 +37,7 @@ function SideBar() {
         {/* ========== End BUSCADOR ==========  */}
 
         {/* ========== Start LISTADO ========== */}
-        <nav className="block px-12 border-t border-stone-300">
+        <nav className="block px-4 lg:px-12 border-t border-stone-300">
           <section className="block pt-12">
             <h3 className="text-md uppercase text-teal-700 font-semibold">
               Menú
@@ -45,9 +47,9 @@ function SideBar() {
               <li className="block p-0 mt-4">
                 <Link
                   to="/Company"
-                  className="flex items-center justify-start text-stone-400 no-underline font-semibold text-sm transition-color duration-150 ease-in-out hover:text-stone-950"
+                  className=" flex items-center justify-start text-stone-400 no-underline font-semibold text-sm transition-color duration-150 ease-in-out hover:text-stone-950"
                 >
-                  <i className="text-teal-700 mr-2 bi bi-building"></i>
+                  <i className="text-teal-700 hidden bi bi-building lg:mr-2 lg:block"></i>
                   Empresas
                 </Link>
               </li>
@@ -57,7 +59,7 @@ function SideBar() {
                   to="/Applicants"
                   className="flex items-center justify-start text-stone-400 no-underline font-semibold text-sm transition-color duration-150 ease-in-out hover:text-stone-950"
                 >
-                  <i className="text-teal-700 mr-2 bi bi-person"></i>
+                  <i className="text-teal-700 mr-2 hidden bi bi-person lg:mr-2 lg:block"></i>
                   Aspirantes
                 </Link>
               </li>
@@ -67,7 +69,7 @@ function SideBar() {
                   to="/Professions"
                   className="flex items-center justify-start text-stone-400 no-underline font-semibold text-sm transition-color duration-150 ease-in-out hover:text-stone-950"
                 >
-                  <i className="text-teal-700 mr-2 bi bi-list-check"></i>
+                  <i className="text-teal-700 mr-2 hidden bi bi-list-check lg:mr-2 lg:block"></i>
                   Profesiones
                 </Link>
               </li>
@@ -77,7 +79,7 @@ function SideBar() {
                   to="/Postulate"
                   className="flex items-center justify-start text-stone-400 no-underline font-semibold text-sm transition-color duration-150 ease-in-out hover:text-stone-950"
                 >
-                  <i className="text-teal-700 mr-2 bi bi-person-vcard"></i>
+                  <i className="text-teal-700 mr-2 hidden bi bi-person-vcard lg:mr-2 lg:block"></i>
                   Postulate aquí
                 </Link>
               </li>
@@ -87,7 +89,7 @@ function SideBar() {
                   to="/Contact"
                   className="flex items-center justify-start text-stone-400 no-underline font-semibold text-sm transition-color duration-150 ease-in-out hover:text-stone-950"
                 >
-                  <i className="text-teal-700 mr-2 bi bi-chat-left-text"></i>
+                  <i className="text-teal-700 mr-2 hidden bi bi-chat-left-text lg:mr-2 lg:block"></i>
                   Contacto
                 </Link>
               </li>

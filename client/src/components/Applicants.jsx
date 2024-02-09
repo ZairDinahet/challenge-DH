@@ -12,11 +12,11 @@ function Applicants() {
       <div className="p-12 overflow-auto w-full">
         <section>
           <h2 className="text-3xl text-teal-700">Aspirantes</h2>
-          <article className="p-0 grid grid-cols-3 gap-8">
+          <article className="p-0 grid xl:grid-cols-3 xl:gap-8 sm:grid-cols-2 sm:gap-4">
             <div className="bg-slate-50 h-80 text-center p-10 rounded-md shadow-xl hover:shadow-2xl transition-all duration-150 my-5">
               <div className="w-24 h-24 rounded-full mx-auto overflow-hidden">
                 <img
-                  className="block w-full h-full object-cover"
+                  className="block w-flil h-flil object-cover"
                   src={foto1}
                   alt="Gloria Medina"
                 />
