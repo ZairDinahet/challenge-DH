@@ -47,12 +47,11 @@ module.exports = {
   delete: async (id) => {
     const data = await Applicant.findByPk(id);
     if (!data) {
-      throw new ClientError("Applicant not found ", 404);
+      throw new ClientError("Applicant not found", 404);
     } else {
 
       await data.setProfessions([])
       await data.destroy();
-      return data;
     }
   },
   update: async (id, dataUpdate) => {
