@@ -5,8 +5,8 @@ function Professions() {
   const [professions, setProfessions] = useState([])
 
   async function fetchData() {
-    const data = await professionsApi() // Llama a la función para obtener los datos
-    setProfessions(data.data) // Establece los datos de los solicitantes en el estado
+    const data = await professionsApi() 
+    setProfessions(data.data)
   }
 
   useEffect(() => {
