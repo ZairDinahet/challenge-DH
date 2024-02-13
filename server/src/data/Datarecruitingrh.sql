@@ -48,4 +48,20 @@ VALUES
     (13, 9),
     (14, 6),
     (15, 4);
-    
+
+INSERT INTO companies (name, image, activeNotices, category, location) 
+VALUES 
+    ('Accenture','foto16.jpg','1 aviso activo', 'Consultoria', 'Capital Federal'),
+    ('Aeropuertos Argentina 200', 'foto17.jpg','10 avisos activo', 'Servicios Aeropuertarios', 'Capital Federal'),
+    ('Grupo SancorSlud', 'foto18.jpg','8 avisos activos', 'Servicios de Salud', 'Santa Fe'),
+    ('EY', 'foto19.jpg','15 avisos activo', 'Consultoria', 'Capital Federal'),
+    ('MercadoLibre', 'foto20.jpg', '6 avisos activos', 'Comercio electrónico', 'Buenos Aires'),
+    ('YPF', 'foto21.jpg', '11 avisos activos', 'Energía', 'Buenos Aires'),
+    ('Banco Galicia', 'foto22.png', '3 avisos activos', 'Servicios financieros', 'Ciudad Autónoma de Buenos Aires'),
+    ('Globant', 'foto23.png', '4 avisos activos', 'Tecnología', 'Ciudad Autónoma de Buenos Aires'),
+    ('Tenaris', 'foto24.png', '7 avisos activos', 'Industria siderúrgica', 'Buenos Aires'),
+    ('Telecom Argentina', 'foto25.png', '7 avisos activos', 'Telecomunicaciones', 'Buenos Aires'),
+    ('Grupo Clarín', 'foto26.png', '5 avisos activos', 'Medios de comunicación', 'Buenos Aires'),
+    ('Banco Santander Río', 'foto27.png', '9 avisos activos', 'Servicios financieros', 'Buenos Aires'),
+    ('Grupo Techint', 'foto28.png', '2 avisos activos', 'Ingenieria y Construccion', 'Buenos Aires'),
+    ('Farmacity', 'foto29.png', '8 avisos activos', 'Salud', 'Ciudad Autónoma de Buenos Aires');

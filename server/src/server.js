@@ -4,6 +4,7 @@ const cors = require('cors');
 const { ClientError } = require('./utils/errors')
 const applicantsRoutes = require('./routes/applicantsRoutes')
 const professionsRoutes = require('./routes/professionsRoutes')
+const companiesRoutes = require('./routes/companiesRoutes')
 
 const server = express();
 
@@ -15,7 +16,7 @@ server.use(cors());
 // Ruteos
 server.use('/applicants', applicantsRoutes)
 server.use('/professions', professionsRoutes)
-
+server.use('/companies', companiesRoutes)
 
 server.use('*', (req, res) => {
   throw new ClientError('404 Not Found', 404)
