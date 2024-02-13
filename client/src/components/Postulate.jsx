@@ -1,4 +1,4 @@
-import foto22 from '../assets/img/foto22.jpg'
+import foto32 from '../assets/img/foto32.jpg'
 
 function Postulate(){
     return (
@@ -70,15 +70,13 @@ function Postulate(){
             </form>
           </div>
           </section>
-          {/** */}
-          <section className="m-0 p-7 xl:w-1/4 sm:full">
+          <section className="m-0 p-7 hidden xl:block xl:w-1/4 sm:full">
           <img
                   className="h-full"
-                  src={foto22}
+                  src={foto32}
                   alt="banner"
                 />
           </section>
-          {/** */}
         </div>
         {/** */}
         </div>
