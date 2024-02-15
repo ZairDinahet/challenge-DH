@@ -1,8 +1,16 @@
-function Contact(){
+import React, { useState, useEffect } from 'react';
+
+
+
+function Contact(props){
+    
     return (
         <>
         {/* ========== Start CONTACT ========== */}
         <div className=" w-full flex flex-col">
+            
+            
+            <div className={!props.isMobileMenuOpen ? "block" : "hidden sm:block"} id="mobile-menu">
         <div className="m-8">
             <h2 className="text-3xl text-teal-700">Contacta con Digital House</h2>
         </div>
@@ -124,8 +132,11 @@ function Contact(){
             </section>
         </section>
         </div>
+            </div>
         </div>
-        {/* ========== End PROFESIONES ========== */}    
+        
+        {/* ========== End PROFESIONES ========== */}  
+        
         </>
     )
 }
