@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { companiesApi } from '../queries/companiesApi'
 
-function Company() {
+function Company(props) {
   const [companies, setCompanies] = useState([])
 
   async function fetchData() {
@@ -16,7 +16,8 @@ function Company() {
     return (
         <>
             {/* ========== list-checkt COMPANIES ========== */}
-            <div className="p-12 overflow-auto w-full">
+            {props.isMobileMenuOpen ?  null:
+            <div className="p-12 overflow-auto w-4/5">
                 <section>
                 <h2 className="text-3xl text-teal-700">Empresas</h2>
                 <article className="p-0 grid xl:grid-cols-2 gap-4 sm:grid-cols-1">
@@ -58,6 +59,7 @@ function Company() {
                 </article>
                 </section>
             </div>
+            }
             {/* ========== End COMPANIES ========== */}
     </>
     )

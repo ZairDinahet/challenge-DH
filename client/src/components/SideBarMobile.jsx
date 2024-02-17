@@ -9,12 +9,16 @@ import TopBar from "./TopBar";
 
 import { Link, Route, Routes } from "react-router-dom";
 
-function SideBarMobile() {
+function SideBarMobile(props) {
+  const handleCloseMenu = () => {
+    props.setIsMobileMenuOpen(false);
+  };
   
   return (
     <>
       {/* ========== Start MENU ========== */}
-      <header className="block pb-12 h-full bg-slate-50 border-r border-stone-300 w-full">
+      {!props.isMobileMenuOpen ? null : 
+      <header className={`block sm:hidden pb-12 h-1/2 bg-slate-50 border-r border-stone-300 w-full   `}>
 
         {/* ========== Start LOGO ========== */}
             <Link to="/">
@@ -49,6 +53,7 @@ function SideBarMobile() {
                 <Link
                   to="/Company"
                   className=" flex items-center justify-start text-stone-400 no-underline font-semibold text-md transition-color duration-150 ease-in-out hover:text-stone-950"
+                  onClick={handleCloseMenu} 
                 >
                   <i className="text-teal-700 bi bi-building lg:mr-2 "></i>
                   Empresas
@@ -59,6 +64,7 @@ function SideBarMobile() {
                 <Link
                   to="/Applicants"
                   className="flex items-center justify-start text-stone-400 no-underline font-semibold text-md transition-color duration-150 ease-in-out hover:text-stone-950"
+                  onClick={handleCloseMenu} 
                 >
                   <i className="text-teal-700 mr-2  bi bi-person lg:mr-2 "></i>
                   Aspirantes
@@ -69,6 +75,7 @@ function SideBarMobile() {
                 <Link
                   to="/Professions"
                   className="flex items-center justify-start text-stone-400 no-underline font-semibold text-md transition-color duration-150 ease-in-out hover:text-stone-950"
+                  onClick={handleCloseMenu} 
                 >
                   <i className="text-teal-700 mr-2  bi bi-list-check lg:mr-2 "></i>
                   Profesiones
@@ -79,6 +86,7 @@ function SideBarMobile() {
                 <Link
                   to="/Postulate"
                   className="flex items-center justify-start text-stone-400 no-underline font-semibold text-md transition-color duration-150 ease-in-out hover:text-stone-950"
+                  onClick={handleCloseMenu} 
                 >
                   <i className="text-teal-700 mr-2  bi bi-person-vcard lg:mr-2 "></i>
                   Postulate aquí
@@ -89,6 +97,7 @@ function SideBarMobile() {
                 <Link
                   to="/Contact"
                   className="flex items-center justify-start text-stone-400 no-underline font-semibold text-md transition-color duration-150 ease-in-out hover:text-stone-950"
+                  onClick={handleCloseMenu} 
                 >
                   <i className="text-teal-700 mr-2  bi bi-chat-left-text lg:mr-2 "></i>
                   Contacto
@@ -100,13 +109,14 @@ function SideBarMobile() {
         {/* ========== End LISTADO ========== */}
         
       </header>
-
+      }
       <Routes>
-        <Route path="/Company" element={<Company />} />
-        <Route path="/Applicants" element={<Applicants />} />
-        <Route path="/Professions" element={<Professions />} />
-        <Route path="/Postulate" element={<Postulate />} />
-        <Route path="/Contact" element={<Contact />} />
+        <Route exact path="/" element={<ContentWrapper isMobileMenuOpen={props.isMobileMenuOpen}/>} />
+        <Route path="/Company/*" element={<Company isMobileMenuOpen={props.isMobileMenuOpen}/>} />
+        <Route path="/Applicants/*" element={<Applicants isMobileMenuOpen={props.isMobileMenuOpen}/>} />
+        <Route path="/Professions/*" element={<Professions isMobileMenuOpen={props.isMobileMenuOpen}/>} />
+        <Route path="/Postulate/*" element={<Postulate isMobileMenuOpen={props.isMobileMenuOpen}/>} />
+        <Route path="/Contact/*" element={<Contact isMobileMenuOpen={props.isMobileMenuOpen}/>} />
   
       </Routes>
     </>
