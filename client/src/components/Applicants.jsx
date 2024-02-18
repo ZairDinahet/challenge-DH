@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { applicantssApi } from '../queries/applicantsApi'
 
-function Applicants() {
+function Applicants(props) {
   const [applicants, setApplicants] = useState([])
 
   async function fetchData() {
@@ -16,6 +16,7 @@ function Applicants() {
   return (
     <>
       {/* ========== Start ASPIRANTES ========== */}
+      {props.isMobileMenuOpen ?  null:
       <div className="p-12 overflow-auto w-full">
 
         <section>
@@ -54,6 +55,7 @@ function Applicants() {
           </article>
         </section>
       </div>
+      }
       {/* ========== End ASPIRANTES ========== */}
     </>
   )

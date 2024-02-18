@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { professionsApi } from '../queries/professions'
 
-function Professions() {
+function Professions(props) {
   const [professions, setProfessions] = useState([])
 
   async function fetchData() {
@@ -16,6 +16,7 @@ function Professions() {
   return (
     <>
       {/* ========== Start PROFESIONES ========== */}
+      {props.isMobileMenuOpen ?  null:
       <div className="p-12 overflow-auto w-full">
         <section>
           <h2 className="mt-3 text-3xl text-teal-700">Profesiones</h2>
@@ -29,6 +30,7 @@ function Professions() {
           </div>
         </section>
       </div>
+      }
       {/* ========== End PROFESIONES ========== */}
     </>
   )

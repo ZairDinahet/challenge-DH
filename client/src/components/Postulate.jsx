@@ -1,10 +1,11 @@
 import foto32 from '../assets/img/foto32.jpg'
 
-function Postulate(){
+function Postulate(props){
     return (
         <>
         {/* ========== Start  ========== */}
-        <div className="w-full h-full flex flex-col overflow-auto">
+        {props.isMobileMenuOpen ?  null:
+        <div className="w-full h-full flex flex-col">
           <div className="m-8">
               <h2 className="text-3xl text-teal-700">Llena este formulario para postularte</h2>
           </div>
@@ -58,6 +59,7 @@ function Postulate(){
                     <label htmlFor="img" className="block text-sm font-medium text-stone-500">Adjuntar Imagen</label>
                     <input type="file" id="img" name="img" className="mt-2 mb-2 h-8 w-3/4"/>
                   </div>
+
                 </div>
                 
                 <div className="mb-4">
@@ -80,7 +82,7 @@ function Postulate(){
           </div>
           {/** */}
         </div>
-        
+        }
         {/* ========== End  ========== */}    
         </>
     )
