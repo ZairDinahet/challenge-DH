@@ -14,7 +14,6 @@ function SideBar() {
     <>
       {/* ========== Start MENU ========== */}
       <header className="pb-12 hidden h-auto bg-slate-50 border-r border-stone-300 w-1/5 sm:block">
-
         {/* ========== Start LOGO ========== */}
             <Link to="/">
               <figure className="h-20 flex items-center justify-start m-0 px-4">
