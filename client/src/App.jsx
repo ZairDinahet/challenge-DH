@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div >
-      <div className="flex w-screen h-full text-stone-400 bg-stone-50 text-base font-sans">
+      <div className="flex w-screen h-screen text-stone-400 bg-stone-50 text-base font-sans">
         <BrowserRouter>
           <SideBar />
         </BrowserRouter>

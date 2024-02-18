@@ -13,7 +13,7 @@ function SideBar() {
   return (
     <>
       {/* ========== Start MENU ========== */}
-      <header className="pb-12 h-auto bg-slate-50 border-r border-stone-300 w-1/5">
+      <header className="pb-12 h-screen bg-slate-50 border-r border-stone-300 w-1/5">
 
         {/* ========== Start LOGO ========== */}
             <Link to="/">

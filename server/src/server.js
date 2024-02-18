@@ -5,6 +5,7 @@ const { ClientError } = require('./utils/errors')
 const applicantsRoutes = require('./routes/applicantsRoutes')
 const professionsRoutes = require('./routes/professionsRoutes')
 const companiesRoutes = require('./routes/companiesRoutes')
+const contactRoutes = require('./routes/contactRoutes')
 
 const server = express();
 
@@ -17,6 +18,7 @@ server.use(cors());
 server.use('/applicants', applicantsRoutes)
 server.use('/professions', professionsRoutes)
 server.use('/companies', companiesRoutes)
+server.use('/contact', contactRoutes)
 
 server.use('*', (req, res) => {
   throw new ClientError('404 Not Found', 404)
