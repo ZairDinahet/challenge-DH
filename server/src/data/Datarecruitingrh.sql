@@ -20,16 +20,16 @@ VALUES
 
 INSERT INTO professions (name) 
 VALUES
-    ("Abogado"),
-    ("Administrador"),
-    ("Arquitecto"),
-    ("Botánico"),
-    ("Computista"),
-    ("Desarrollador"),
-    ("Economista"),
-    ("Linguista"),
-    ("Profesor"),
-    ("Técnico de sonido");
+    ("Abogado","foto33.jpg"),
+    ("Administrador","foto34.jpg"),
+    ("Arquitecto","foto35.jpg"),
+    ("Botánico","foto36.jpg"),
+    ("Computista",null),
+    ("Desarrollador","foto38.jpg"),
+    ("Economista","foto39.jpg"),
+    ("Linguista",null),
+    ("Profesor",null),
+    ("Técnico de sonido",null);
     
 INSERT INTO applicantsprofessions (idApplicant, idProfession ) 
 VALUES

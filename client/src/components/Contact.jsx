@@ -7,7 +7,7 @@ function Contact(props) {
     <>
       {/* ========== Start CONTACT ========== */}
       {props.isMobileMenuOpen ? null : 
-      <div className="w-4/5 flex flex-col overflow-auto">
+      <div className="w-full flex flex-col overflow-auto">
         <div className="m-8">
           <h2 className="text-3xl text-teal-700">Contacta con Digital House</h2>
         </div>

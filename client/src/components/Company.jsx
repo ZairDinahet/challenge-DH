@@ -17,13 +17,13 @@ function Company(props) {
         <>
             {/* ========== list-checkt COMPANIES ========== */}
             {props.isMobileMenuOpen ?  null:
-            <div className="p-12 overflow-auto w-4/5">
+            <div className="p-12 overflow-auto w-full">
                 <section>
                 <h2 className="text-3xl text-teal-700">Empresas</h2>
                 <article className="p-0 grid xl:grid-cols-2 gap-4 sm:grid-cols-1">
                     {
                         companies.map((company, i) => (
-                        <div className="bg-slate-50 text-center p-10 rounded-md shadow-xl hover:shadow-2xl transition-all duration-150 my-5">
+                        <div key={i} className="bg-slate-50 text-center p-10 rounded-md shadow-xl hover:shadow-2xl transition-all duration-150 my-5">
                             <div className="w-28 h-20 rounded mx-auto overflow-hidden">
                                 <img
                                 className="block object-cover"
