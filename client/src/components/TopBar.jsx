@@ -13,7 +13,7 @@ function TopBar() {
                         <input
                             type="text"
                             id="search"
-                            className="px-4 h-full w-1/2 rounded-md border border-stone-300 text-stone-950 focus:bg-stone-50 sm:hidden lg:block"
+                            className="px-4 h-full w-full rounded-md border border-stone-300 text-stone-950 focus:bg-stone-50 sm:hidden lg:block"
                         />
                         <i className="text-teal-700 bi bi-search text-2xl pl-2"></i>
                     </label>
