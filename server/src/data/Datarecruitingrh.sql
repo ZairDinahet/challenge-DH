@@ -18,7 +18,7 @@ VALUES
     ('Haskell', 'Perroni', 'Haskell.Perroni@gmail.com', '+1 916 441 2194', 'https://www.linkedin.com/in/HaskellPerroni', '1997-12-1', "foto14.jpg", 'Superficial foreign body of breast, unsp breast, sequela', 'Sacramento', 'United States'),
     ('Manuel', 'Skehan', 'Manuel.Skehan@gmail.com', '+66 998 679 2882', 'https://www.linkedin.com/in/ManuelSkehan', '1993-12-3', "foto15.jpg", 'Adverse effect of smallpox vaccines', 'Phon Phisai', 'Thailand');
 
-INSERT INTO professions (name) 
+INSERT INTO professions (name, image) 
 VALUES
     ("Abogado","foto33.jpg"),
     ("Administrador","foto34.jpg"),
