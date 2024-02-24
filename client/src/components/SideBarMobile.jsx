@@ -18,7 +18,7 @@ function SideBarMobile(props) {
     <>
       {/* ========== Start MENU ========== */}
       {!props.isMobileMenuOpen ? null : 
-      <header className={`block sm:hidden pb-12 h-1/2 bg-slate-50 border-r border-stone-300 w-full   `}>
+      <header className={`block sm:hidden pb-12 h-1/2 bg-slate-50 border-r border-stone-300 w-full`}>
 
         {/* ========== Start LOGO ========== */}
             <Link to="/">
