@@ -1,5 +1,14 @@
+import { useRef } from "react"
 
-function TopBar() {
+function TopBar(props) {
+    const { handleSearch = () => { } } = props
+    const inputRef = useRef()
+
+    const search = () => {
+        let title = inputRef.current.value
+        handleSearch(title)
+        console.log(title)
+    }
 
     return (
         <>
@@ -14,6 +23,8 @@ function TopBar() {
                             type="text"
                             id="search"
                             className="px-4 h-full w-full rounded-md border border-stone-300 text-stone-950 focus:bg-stone-50 sm:hidden lg:block"
+                            onBlur={search}
+                            ref={inputRef}
                         />
                         <i className="text-teal-700 bi bi-search text-2xl pl-2"></i>
                     </label>
@@ -25,3 +36,4 @@ function TopBar() {
     )
 }
 export default TopBar;
+

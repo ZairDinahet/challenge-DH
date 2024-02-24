@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { applicantssApi } from '../queries/applicantsApi'
+import { applicantsApi } from '../queries/applicantsApi'
 
 function Applicants(props) {
   const [applicants, setApplicants] = useState([])
 
   async function fetchData() {
-    const data = await applicantssApi() 
+    const data = await applicantsApi() 
     setApplicants(data.data) 
   }
 

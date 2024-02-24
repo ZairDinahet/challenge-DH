@@ -5,7 +5,7 @@ const router = express.Router();
 const companiesController = require("../controllers/companiesController");
 
 // Rutas
-
+router.get("/search/:name", companiesController.getCompaniesName);
 router.get("/", companiesController.getCompanies);
 
 module.exports = router;

@@ -2,17 +2,22 @@ import { useEffect, useState } from 'react'
 import { companiesApi } from '../queries/companiesApi'
 
 function Company(props) {
-  const [companies, setCompanies] = useState([])
-
-  async function fetchData() {
-    const data = await companiesApi() 
-    setCompanies(data.data) 
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
+    const [companies, setCompanies] = useState(props.companies || []);
+    
+    async function fetchData() {
+      const data = await companiesApi();
+      setCompanies(data.data);
+    }
+    
+    useEffect(() => {
+        if (!props.companies || props.companies.length == 0 ) {
+          fetchData();
+        } else {
+          setCompanies(props.companies);
+        }
+      }, [props.companies]);
+      
+    
     return (
         <>
             {/* ========== list-checkt COMPANIES ========== */}

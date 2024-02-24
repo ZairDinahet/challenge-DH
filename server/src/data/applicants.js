@@ -1,13 +1,14 @@
 const { Applicant, Profession } = require("../database/models")
 const { ClientError } = require("../utils/errors")
+const { Op } = require("sequelize");
 
 module.exports = {
   list: async () => {
-    const data  = await Applicant.findAll({
-      include:[{
+    const data = await Applicant.findAll({
+      include: [{
         model: Profession,
         as: 'professions',
-        attributes: ['id','name'],
+        attributes: ['id', 'name'],
         through: {
           attributes: [],
         }
@@ -37,6 +38,31 @@ module.exports = {
       return data;
     }
   },
+  getOneName: async (name) => {
+    console.log(name);
+    const data = await Applicant.findAll({
+      where: {
+        name: {
+          [Op.like]: `%${name}%`
+        }
+      },
+      include: [{
+        model: Profession,
+        as: 'professions',
+        attributes: ['name'],
+        through: {
+          attributes: [],
+        }
+      }],
+    });
+  
+    if (data.length === 0) {
+      throw new ClientError("Applicant not found", 404);
+    } else {
+      return data;
+    }
+  },
+  
   create: async (dataCreate) => {
     const dataProfession = await Profession.findByPk(dataCreate.profession)
 

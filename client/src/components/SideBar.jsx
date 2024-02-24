@@ -1,3 +1,6 @@
+import { Link, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+
 import image from "../assets/img/logo-dh.png";
 import ContentWrapper from "./ContentWrapper";
 import Applicants from "./Applicants";
@@ -7,32 +10,43 @@ import Postulate from "./Postulate";
 import Contact from "./Contact";
 import TopBar from "./TopBar";
 
-import { Link, Route, Routes } from "react-router-dom";
+import { companiesNameApi } from '../queries/companiesApi'
+
 
 function SideBar() {
+  const [companies, setCompanies] = useState([])
+  async function getCompanie(name) {
+    const data = await companiesNameApi(name)
+    if(data == undefined){
+      setCompanies([])
+    }else{
+      setCompanies(data.data)
+    }
+  }
+
   return (
     <>
       {/* ========== Start MENU ========== */}
       <header className="pb-12 hidden h-auto bg-slate-50 border-r border-stone-300 w-1/5 sm:block">
         {/* ========== Start LOGO ========== */}
-            <Link to="/">
-              <figure className="h-20 flex items-center justify-start m-0 px-4">
-                <div className="hidden lg:block w-10 h-10 rounded-full">
-                  <img
-                    src={image}
-                    alt="Logo Digital House"
-                    className="hidden lg:block w-full h-full object-cover"
-                  />
-                </div>
-                <figcaption className="m-0 p-0 lg:pl-4 text-stone-950 font-bold text-sm">
-                  Digital House
-                </figcaption>
-              </figure>
-            </Link>
+        <Link to="/">
+          <figure className="h-20 flex items-center justify-start m-0 px-4">
+            <div className="hidden lg:block w-10 h-10 rounded-full">
+              <img
+                src={image}
+                alt="Logo Digital House"
+                className="hidden lg:block w-full h-full object-cover"
+              />
+            </div>
+            <figcaption className="m-0 p-0 lg:pl-4 text-stone-950 font-bold text-sm">
+              Digital House
+            </figcaption>
+          </figure>
+        </Link>
         {/* ========== End LOGO ========== */}
 
         {/* ========== Start BUSCADOR ========== */}
-        <TopBar />
+        <TopBar handleSearch={getCompanie} />
         {/* ========== End BUSCADOR ==========  */}
 
         {/* ========== Start LISTADO ========== */}
@@ -96,12 +110,12 @@ function SideBar() {
           </section>
         </nav>
         {/* ========== End LISTADO ========== */}
-        
+
       </header>
 
       <Routes>
         <Route exact path="/" element={<ContentWrapper />} />
-        <Route path="/Company" element={<Company />} />
+        <Route path="/Company" element={<Company companies={companies} />} />
         <Route path="/Applicants" element={<Applicants />} />
         <Route path="/Professions" element={<Professions />} />
         <Route path="/Postulate" element={<Postulate />} />
