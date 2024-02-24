@@ -15,7 +15,7 @@ function Postulate(props){
             <section className="m-0 p-7 xl:w-3/4 sm:full">
               <div className="p-4 mt-4 rounded-md border-2 bg-white border-stone-300">
               <h2 className="text-2xl text-stone-500">Formulario de Postulación</h2>
-              <form action="#" method="POST">
+              <form action="#" method="POST" enctype="multipart/form-data">
                 <div className="grid grid-cols-1 sm:grid-cols-2">
                   <div className="mb-4">
                     <label htmlFor="name" className="block text-sm font-medium text-stone-500">Nombre</label>
