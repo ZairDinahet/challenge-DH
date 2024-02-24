@@ -55,7 +55,7 @@ function SideBarMobile(props) {
                   className=" flex items-center justify-start text-stone-400 no-underline font-semibold text-md transition-color duration-150 ease-in-out hover:text-stone-950"
                   onClick={handleCloseMenu} 
                 >
-                  <i className="text-teal-700 bi bi-building lg:mr-2 "></i>
+                  <i className="text-teal-700 mr-2 bi bi-building lg:mr-2 "></i>
                   Empresas
                 </Link>
               </li>
@@ -66,7 +66,7 @@ function SideBarMobile(props) {
                   className="flex items-center justify-start text-stone-400 no-underline font-semibold text-md transition-color duration-150 ease-in-out hover:text-stone-950"
                   onClick={handleCloseMenu} 
                 >
-                  <i className="text-teal-700 mr-2  bi bi-person lg:mr-2 "></i>
+                  <i className="text-teal-700 mr-2 bi bi-person lg:mr-2 "></i>
                   Aspirantes
                 </Link>
               </li>
