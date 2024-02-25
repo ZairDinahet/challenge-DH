@@ -37,9 +37,6 @@ function SideBarMobile(props) {
             </Link>
         {/* ========== End LOGO ========== */}
 
-        {/* ========== Start BUSCADOR ========== */}
-        <TopBar />
-        {/* ========== End BUSCADOR ==========  */}
 
         {/* ========== Start LISTADO ========== */}
         <nav className="block px-4 border-t border-stone-300">

@@ -11,25 +11,49 @@ import Contact from "./Contact";
 import TopBar from "./TopBar";
 
 import { companiesNameApi } from '../queries/companiesApi'
+import { applicantsNameApi } from '../queries/applicantsApi'
 
 
 function SideBar() {
   const [companies, setCompanies] = useState([])
-  async function getCompanie(name) {
-    const data = await companiesNameApi(name)
-    if(data == undefined){
+  const [applicants, setApplicants] = useState([])
+  const [estado , setEstado ] = useState(false)
+
+  async function getData(name) {
+    const dataCompanies= await companiesNameApi(name)
+    const dataApplicants = await applicantsNameApi(name)
+
+    if(!dataCompanies && dataApplicants){
       setCompanies([])
+      setApplicants(dataApplicants.data)  
+      setEstado(true)
+      
+    }else if(dataCompanies && !dataApplicants){
+      setCompanies(dataCompanies.data )
+      setApplicants([])  
+      setEstado(true)
+
+    }else if(dataCompanies == undefined || dataApplicants == undefined){
+      setCompanies([])
+      setApplicants([]) 
+      
     }else{
-      setCompanies(data.data)
+      setCompanies(dataCompanies.data )
+      setApplicants(dataApplicants.data)
     }
   }
+
+   const cambiarEstado = () =>{
+     setEstado(false)
+     window.reloand()
+   }
 
   return (
     <>
       {/* ========== Start MENU ========== */}
       <header className="pb-12 hidden h-auto bg-slate-50 border-r border-stone-300 w-1/5 sm:block">
         {/* ========== Start LOGO ========== */}
-        <Link to="/">
+        <Link to="/" onClick={cambiarEstado}>
           <figure className="h-20 flex items-center justify-start m-0 px-4">
             <div className="hidden lg:block w-10 h-10 rounded-full">
               <img
@@ -46,7 +70,7 @@ function SideBar() {
         {/* ========== End LOGO ========== */}
 
         {/* ========== Start BUSCADOR ========== */}
-        <TopBar handleSearch={getCompanie} />
+        <TopBar handleSearch={getData}  />
         {/* ========== End BUSCADOR ==========  */}
 
         {/* ========== Start LISTADO ========== */}
@@ -114,9 +138,9 @@ function SideBar() {
       </header>
 
       <Routes>
-        <Route exact path="/" element={<ContentWrapper />} />
-        <Route path="/Company" element={<Company companies={companies} />} />
-        <Route path="/Applicants" element={<Applicants />} />
+        <Route exact path="/" element={<ContentWrapper  companies={companies} applicants={applicants} estado={estado} />} />
+        <Route path="/Company" element={<Company  companies={companies}  estado={estado}/>} />
+        <Route path="/Applicants" element={<Applicants applicants={applicants}  estado={estado}/>} />
         <Route path="/Professions" element={<Professions />} />
         <Route path="/Postulate" element={<Postulate />} />
         <Route path="/Contact" element={<Contact />} />

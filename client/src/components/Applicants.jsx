@@ -2,16 +2,33 @@ import { useEffect, useState } from 'react'
 import { applicantsApi } from '../queries/applicantsApi'
 
 function Applicants(props) {
-  const [applicants, setApplicants] = useState([])
+  // const [applicants, setApplicants] = useState([])
+
+  // async function fetchData() {
+  //   const data = await applicantsApi() 
+  //   setApplicants(data.data) 
+  // }
+
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])
+
+  const [applicants, setApplicants] = useState(props.applicants || []);
 
   async function fetchData() {
-    const data = await applicantsApi() 
-    setApplicants(data.data) 
+  const data = await applicantsApi() 
+  setApplicants(data.data) 
   }
-
+  
   useEffect(() => {
-    fetchData()
-  }, [])
+      if (!props.applicants || props.applicants.length == 0 || props.estado == false) {
+        fetchData();
+
+      } else {
+        setApplicants(props.applicants);
+      }
+    }, [props.applicants]);
+    
 
   return (
     <>

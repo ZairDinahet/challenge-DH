@@ -10,7 +10,7 @@ function Company(props) {
     }
     
     useEffect(() => {
-        if (!props.companies || props.companies.length == 0 ) {
+        if (!props.companies || props.companies.length == 0 || props.estado == false) {
           fetchData();
         } else {
           setCompanies(props.companies);
