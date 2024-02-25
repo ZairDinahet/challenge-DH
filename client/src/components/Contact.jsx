@@ -1,14 +1,50 @@
-import contactApi from "../queries/contactApi";
-
-const { url } = contactApi;
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 function Contact(props) {
+  const form = useRef(null);
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+
+    try {
+      const result = await emailjs.sendForm(
+        "service_x5hmwkt",
+        "template_rm6eg7j",
+        form.current,
+        {
+          publicKey: "yJOdlc_FJXUiRl8YR",
+        }
+      );
+
+      console.log("Hecho!", result.text);
+
+      // Obtener el template de correo electrónico
+      const templateParams = {
+        name: form.current.name.value,
+        lastName: form.current.lastName.value,
+        email: form.current.email.value,
+        message: form.current.message.value,
+      };
+
+      // Enviar el correo electrónico con los parámetros del template actualizados
+      const emailResult = await emailjs.send(
+        "service_x5hmwkt",
+        "template_rm6eg7j",
+        templateParams
+      );
+
+      console.log("Correo enviado con éxito!", emailResult.text);
+    } catch (error) {
+      console.error("Envio fallido...", error.text);
+    }
+  }
+
   return (
     <>
       {/* ========== Start CONTACT ========== */}
       {props.isMobileMenuOpen ? null : (
         <div className="w-full flex flex-col overflow-auto">
-
           <div className="m-8">
             <h2 className="text-3xl text-teal-700">
               Contacta con Digital House
@@ -16,7 +52,6 @@ function Contact(props) {
           </div>
 
           <div className="w-full xl:flex">
-
             <section className="m-0 p-7 xl:w-3/4 sm:w-full">
               <div className="p-4 mb-4 rounded-md border-2 bg-white border-stone-300">
                 <p className="pb-5 mb-5 text-2xl text-stone-500 border-b-2 border-stone-300">
@@ -88,16 +123,20 @@ function Contact(props) {
                   </div>
                 </div>
               </div>
-              
+
               <div className="p-4 mt-4 rounded-md border-2 bg-white border-stone-300">
                 <p className="text-2xl text-stone-500 py-4">
                   Formulario de contacto
                 </p>
-                <form action={url} method="POST">
-                    
+                <form ref={form} onSubmit={sendEmail}>
                   <div className="grid grid-cols-1 sm:grid-cols-2">
                     <div className="mb-4">
-                      <label htmlFor="name" className="text-sm font-medium text-stone-500">Nombre</label>
+                      <label
+                        htmlFor="name"
+                        className="text-sm font-medium text-stone-500"
+                      >
+                        Nombre
+                      </label>
                       <div className="block">
                         <input
                           className="mt-2 mb-2 h-8 w-3/4 p-2 bg-stone-100 rounded-md border border-stone-500 text-stone-950"
@@ -108,7 +147,12 @@ function Contact(props) {
                       </div>
                     </div>
                     <div className="mb-4">
-                      <label htmlFor="lastName" className="text-sm font-medium text-stone-500">Apellido</label>
+                      <label
+                        htmlFor="lastName"
+                        className="text-sm font-medium text-stone-500"
+                      >
+                        Apellido
+                      </label>
                       <div className="block">
                         <input
                           className="mt-2 mb-2 h-8 w-3/4 p-2 bg-stone-100 rounded-md border border-stone-500 text-stone-950"
@@ -119,7 +163,12 @@ function Contact(props) {
                       </div>
                     </div>
                     <div className="mb-4">
-                      <label htmlFor="email" className="text-sm font-medium text-stone-500">Email</label>
+                      <label
+                        htmlFor="email"
+                        className="text-sm font-medium text-stone-500"
+                      >
+                        Email
+                      </label>
                       <div className="block">
                         <input
                           className="mt-2 mb-2 h-8 w-3/4 p-2 bg-stone-100 rounded-md border border-stone-500 text-stone-950"
@@ -133,7 +182,12 @@ function Contact(props) {
 
                   <div className="grid grid-cols-1">
                     <div className="form-group untouched pristine required">
-                      <label htmlFor="message" className="text-sm font-medium text-stone-500">Dejanos tu mensaje</label>
+                      <label
+                        htmlFor="message"
+                        className="text-sm font-medium text-stone-500"
+                      >
+                        Dejanos tu mensaje
+                      </label>
                       <div className="block">
                         <textarea
                           name="message"
@@ -276,9 +330,7 @@ function Contact(props) {
                 </div>
               </section>
             </section>
-
           </div>
-
         </div>
       )}
       {/* ========== End PROFESIONES ========== */}
