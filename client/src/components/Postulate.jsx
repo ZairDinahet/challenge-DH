@@ -5,44 +5,12 @@ import { useEffect, useState } from 'react';
 import {applicantssApiForm} from '../queries/applicantsApi';
 import { professionsApi } from '../queries/professions';
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      // Obtener los datos del formulario
-      const formData = {
-          name: event.target.elements.name.value,
-          lastName: event.target.elements.lastName.value,
-          email: event.target.elements.email.value,
-          numberPhone:event.target.elements.numberPhone.value,
-          linkedIn:event.target.elements.linkedIn.value,
-          birthDate:event.target.elements.birthDate.value,
-          city:event.target.elements.city.value,
-          country:event.target.elements.country.value,
-          aboutMe:event.target.elements.aboutMe.value,
-          image:event.target.elements.image.value,
-          profession: event.target.elements.profession.value,
-      };
-      console.log("desde postulate",formData)
-      const response = await applicantssApiForm(formData);
-      console.log(response); // Manejar la respuesta si es necesario
-    
-    } catch (error) {
-        console.error('Error al enviar el formulario:', error);
-    }
-  };
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     const formData = new FormData(event.target);
-  //     const response = await applicantssApiForm(formData);
-  //     console.log(response);
-  //     console.log(formData); // Manejar la respuesta si es necesario
-  //   } catch (error) {
-  //     console.error('Error al enviar el formulario:', error);
-  //   }
-  // };
+ 
 function Postulate(props){
   const [professions, setProfessions] = useState([]);
+  const [resetImage, setResetImage] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   async function fetchData() {
     const data = await professionsApi();
@@ -51,7 +19,24 @@ function Postulate(props){
   useEffect(() => {
     fetchData();
   }, []);
-    const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const formData = new FormData(event.target);
+      const response = await applicantssApiForm(formData);
+      navigate("/postulate"); 
+      event.target.reset(); 
+      setResetImage(true);
+      setFormSubmitted(true); 
+      setTimeout(() => {
+        setFormSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+    }
+  };
+   
   return (
     <>
       {/* ========== Start  ========== */}
@@ -223,37 +208,22 @@ function Postulate(props){
                       >
                         Foto
                       </span>
-                      <ImagePreview />
+                      <ImagePreview reset={resetImage} />
                     </div>
                   </div>
-
-                  {/* <div className="mb-4">
-                    <span className="text-sm text-stone-500 font-medium block mb-4">Curriculum</span>
-                    <label
-                      htmlFor="cv"
-                      className="my-4 p-2 relative cursor-pointer bg-stone-100 rounded-md border border-stone-500 font-medium text-stone-500 hover:text-teal-700 focus-within:outline-none focus-within:ring-2"
-                    >
-                      <i className="bi bi-paperclip mr-1"></i>
-                      <span>Adjuntar CV</span>
-                      <input
-                        id="cv"
-                        accept=".pdf"
-                        name="cv"
-                        type="file"
-                        className="sr-only"
-                      />
-                    </label>
-                  </div> */}
-                   
                   <div className="mt-4">
                     <button
-                      onClick={() => navigate("/postulate")}
                       type="submit"
                       className="mt-2 p-2 relative cursor-pointer bg-teal-700 rounded-md border border-stone-500 font-medium text-stone-100 hover:text-teal-700 hover:bg-stone-100 focus-within:outline-none focus-within:ring-2"
                     >
                       Enviar Postulación
                     </button>
                   </div>
+                  {formSubmitted && (
+                  <div className="fixed bottom-0 right-0 mb-4 mr-4 bg-teal-700 text-white py-2 px-4 rounded-md">
+                    Formulario enviado
+                  </div>
+                  )}
                 </form>
               </div>
             </section>
