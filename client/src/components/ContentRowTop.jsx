@@ -13,7 +13,7 @@ function contentRowTop(props) {
         {(!props.applicants  &&  !props.companies) ? 
           <header>
             <h2 className="text-3xl text-teal-700">Búsqueda y selección</h2>
-            <p className="text-center text-2xl">
+            <p className="my-3 text-center text-2xl">
               Encontramos talento para tu empresa, en todos los cargos
               administrativos, profesionales y técnicos.
             </p>

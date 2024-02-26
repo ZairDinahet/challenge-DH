@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import defaultImage from "../assets/img/blank-image.png";
 
-const ImagePreview = (props) => {
+const ImagePreview = ({reset}) => {
   const [imagePreview, setImagePreview] = useState(defaultImage);
 
   const handleImageChange = (e) => {
@@ -18,10 +18,10 @@ const ImagePreview = (props) => {
   };
 
   useEffect(() => {
-    if (props.reset) {
+    if (reset) {
       setImagePreview(defaultImage);
     }
-  }, [props.reset]);
+  }, [reset]);
   return (
     <>
       <img

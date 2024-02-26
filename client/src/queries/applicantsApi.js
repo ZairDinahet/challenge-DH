@@ -14,8 +14,9 @@ export async function applicantsApi(){
   }
 
   export async function applicantssApiForm(formData){
-    try {    
-      const response = await fetch('http://localhost:8001/applicants', {
+    try {  
+      const backendURL = import.meta.env.VITE_BACKEND_URL;  
+      const response = await fetch(`${backendURL}/applicants`, {
         method: 'POST',
         body: formData,
       });
@@ -33,7 +34,8 @@ export async function applicantsApi(){
 
   export async function applicantsNameApi(name){
     try {    
-      const data = await fetch(`http://localhost:8001/applicants/search/${name}`)
+      const backendURL = import.meta.env.VITE_BACKEND_URL;  
+      const data = await fetch(`${backendURL}/applicants/search/${name}`)
       const applicants = await data.json()
       if(applicants.meta.status === 200){
         return applicants

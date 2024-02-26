@@ -24,12 +24,12 @@ VALUES
     ("Administrador","foto34.jpg"),
     ("Arquitecto","foto35.jpg"),
     ("Botánico","foto36.jpg"),
-    ("Computista",null),
+    ("Computista","foto37.jpg"),
     ("Desarrollador","foto38.jpg"),
     ("Economista","foto39.jpg"),
-    ("Linguista",null),
-    ("Profesor",null),
-    ("Técnico de sonido",null);
+    ("Linguista","foto40.jpg"),
+    ("Profesor","foto41.jpg"),
+    ("Técnico de sonido","foto42.jpg");
     
 INSERT INTO applicantsprofessions (idApplicant, idProfession ) 
 VALUES
