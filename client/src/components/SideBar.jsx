@@ -9,6 +9,7 @@ import Company from "./Company";
 import Postulate from "./Postulate";
 import Contact from "./Contact";
 import TopBar from "./TopBar";
+import NotFound from "./NotFound";
 
 import { companiesNameApi } from '../queries/companiesApi'
 import { applicantsNameApi } from '../queries/applicantsApi'
@@ -135,6 +136,7 @@ function SideBar() {
         <Route path="/Professions" element={<Professions />} />
         <Route path="/Postulate" element={<Postulate />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

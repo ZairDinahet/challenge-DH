@@ -21,7 +21,7 @@ function Professions(props) {
   return (
     <>
       {props.isMobileMenuOpen ? null :
-        <div className="p-12 overflow-auto w-full h-full">
+        <div className="p-12 overflow-auto w-full flex flex-col">
           <section>
             <h2 className="text-3xl text-teal-700">Profesiones</h2>
             <div className="lg:relative ">
