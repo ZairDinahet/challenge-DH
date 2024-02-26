@@ -36,7 +36,7 @@ function SideBar() {
   }
 
    const cambiarEstado = () =>{
-     window.reloand()
+     window.reload()
    }
 
   return (
