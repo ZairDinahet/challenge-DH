@@ -9,6 +9,7 @@ const applicantsController = require("../controllers/applicantsController");
 // Rutas
 
 router.get("/", applicantsController.getApplicants);
+router.get("/search/:name", applicantsController.getOneApplicantName);
 router.delete("/:id", applicantsController.deleteApplicant);
 router.get("/:id", applicantsController.getOneApplicant);
 router.post("/", upload.single('image'), applicantsController.postApplicant);
