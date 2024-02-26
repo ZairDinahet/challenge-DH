@@ -38,33 +38,13 @@ module.exports = {
       return data;
     }
   },
-  getOneName: async (name) => {
-    console.log(name);
-    const data = await Applicant.findAll({
-      where: {
-        name: {
-          [Op.like]: `%${name}%`
-        }
-      },
-      include: [{
-        model: Profession,
-        as: 'professions',
-        attributes: ['name'],
-        through: {
-          attributes: [],
-        }
-      }],
-    });
-  
-    if (data.length === 0) {
-      throw new ClientError("Applicant not found", 404);
-    } else {
-      return data;
-    }
-  },
-  
-  create: async (dataCreate) => {
+ 
+  create: async (dataCreate, req) => {
+
     const dataProfession = await Profession.findByPk(dataCreate.profession)
+    //Aplico la referencia a la imagen del aplicante
+    const file = req.file;
+    dataCreate.image = file?.filename
 
     const data = await Applicant.create(dataCreate);
     await data.addProfession(dataProfession)

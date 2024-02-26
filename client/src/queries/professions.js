@@ -1,6 +1,7 @@
 export async function professionsApi(){
-    try {    
-      const data = await fetch('http://localhost:8001/professions')
+    try {
+      const backendURL = import.meta.env.VITE_BACKEND_URL;
+      const data = await fetch(`${backendURL}/professions`)
       const professions = await data.json()
       if(professions.meta.status === 200){
         return professions

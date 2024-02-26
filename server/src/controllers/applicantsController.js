@@ -8,7 +8,7 @@ const getApplicants = async (req, res) => {
 }
 
 const postApplicant = async (req, res) => {
-  const applicant = await Applicants.create(req.body);
+  const applicant = await Applicants.create(req.body, req);
   response(res, req, 201, applicant)
 }
 

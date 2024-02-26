@@ -6,14 +6,14 @@ import TopBarMobile from './components/TopBarMobile';
 function App() {
 
   return (
-    <div >
+    <div>
       <div className="flex w-screen h-screen text-stone-400 bg-stone-50 text-base font-sans">
         <BrowserRouter>
           <div className='block w-screen h-screen sm:hidden'>
             <TopBarMobile/>
           </div>
-          <div className='hidden w-screen sm:flex'>
-          <SideBar />
+          <div className='hidden w-screen h-screen sm:flex'>
+            <SideBar />
           </div>
         </BrowserRouter>
       </div>
