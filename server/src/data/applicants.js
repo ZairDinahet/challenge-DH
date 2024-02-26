@@ -1,13 +1,14 @@
 const { Applicant, Profession } = require("../database/models")
 const { ClientError } = require("../utils/errors")
+const { Op } = require("sequelize");
 
 module.exports = {
   list: async () => {
-    const data  = await Applicant.findAll({
-      include:[{
+    const data = await Applicant.findAll({
+      include: [{
         model: Profession,
         as: 'professions',
-        attributes: ['id','name'],
+        attributes: ['id', 'name'],
         through: {
           attributes: [],
         }
@@ -37,7 +38,9 @@ module.exports = {
       return data;
     }
   },
+ 
   create: async (dataCreate, req) => {
+
     const dataProfession = await Profession.findByPk(dataCreate.profession)
     //Aplico la referencia a la imagen del aplicante
     const file = req.file;

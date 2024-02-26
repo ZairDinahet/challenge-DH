@@ -1,7 +1,4 @@
 import ContentRowTop  from './ContentRowTop';
-//import NotFound from './NotFound';
-//import {Link, Route, Routes} from 'react-router-dom';
-
 
 function ContentWrapper(props){
 
@@ -12,8 +9,9 @@ function ContentWrapper(props){
             <div id="content-wrapper" className='overflow-auto w-full'>
                 {/*<!-- Main Content -->*/}
                 <div id="content">
-                    <ContentRowTop />
+                    <ContentRowTop  estado={props.estado} companies={props.companies} applicants={props.applicants}/>
                 </div>
+                
             </div>
             }
         </>

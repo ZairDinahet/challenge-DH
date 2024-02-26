@@ -2,6 +2,11 @@ import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 function Contact(props) {
+  // Variables de EmailJS
+  const templateId = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
+  const serviceId = import.meta.env.VITE_EMAIL_SERVICE_ID;
+  const publicKey = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
+
   const form = useRef(null);
 
   const sendEmail = async (e) => {
@@ -9,11 +14,11 @@ function Contact(props) {
 
     try {
       const result = await emailjs.sendForm(
-        "service_x5hmwkt",
-        "template_rm6eg7j",
+        serviceId,
+        templateId,
         form.current,
         {
-          publicKey: "yJOdlc_FJXUiRl8YR",
+          publicKey: publicKey,
         }
       );
 
@@ -29,8 +34,8 @@ function Contact(props) {
 
       // Enviar el correo electrónico con los parámetros del template actualizados
       const emailResult = await emailjs.send(
-        "service_x5hmwkt",
-        "template_rm6eg7j",
+        serviceId,
+        templateId,
         templateParams
       );
 

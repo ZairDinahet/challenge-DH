@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react'
-import { applicantssApi } from '../queries/applicantsApi'
+import { applicantsApi } from '../queries/applicantsApi'
 
 function Applicants(props) {
-  const [applicants, setApplicants] = useState([])
+  const [applicants, setApplicants] = useState(props.applicants || []);
 
   async function fetchData() {
-    const data = await applicantssApi() 
-    setApplicants(data.data) 
+  const data = await applicantsApi() 
+  setApplicants(data.data) 
   }
-
+  
   useEffect(() => {
-    fetchData()
-  }, [])
-
+      if (!props.applicants ) {
+        fetchData();
+      } else {
+        setApplicants(props.applicants);
+      }
+    }, [props.applicants]);
+    
   return (
     <>
       {/* ========== Start ASPIRANTES ========== */}
