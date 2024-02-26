@@ -64,11 +64,13 @@ module.exports = {
   },
  
   create: async (dataCreate, req) => {
+    const dataProfession = await Profession.findByPk(dataCreate.profession)
     //Aplico la referencia a la imagen del aplicante
     const file = req.file;
     dataCreate.image = file?.filename
-    console.log("datacreate",dataCreate)
+    console.log("dataCreate", dataCreate)
     const data = await Applicant.create(dataCreate);
+    await data.addProfession(dataProfession)
     return data;
   },
   delete: async (id) => {
