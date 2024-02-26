@@ -23,6 +23,11 @@ const getOneApplicant = async (req, res) => {
   const applicant = await Applicants.getOne(id);
   response(res, req, 200, applicant)
 }
+const getOneApplicantName = async (req, res) => {
+  const { name } = req.params;
+  const applicant = await Applicants.getOneName(name);
+  response(res, req, 200, applicant)
+}
 
 const putApplicant = async (req, res) => {
   const { id } = req.params;
@@ -36,5 +41,6 @@ module.exports = {
   postApplicant: cachedAsync(postApplicant),
   deleteApplicant: cachedAsync(deleteApplicant),
   getOneApplicant: cachedAsync(getOneApplicant),
+  getOneApplicantName: cachedAsync(getOneApplicantName),
   putApplicant: cachedAsync(putApplicant)
 }

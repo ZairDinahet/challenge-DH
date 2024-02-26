@@ -1,3 +1,6 @@
+import { Link, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+
 import image from "../assets/img/logo-dh.png";
 import ContentWrapper from "./ContentWrapper";
 import Applicants from "./Applicants";
@@ -7,32 +10,58 @@ import Postulate from "./Postulate";
 import Contact from "./Contact";
 import TopBar from "./TopBar";
 
-import { Link, Route, Routes } from "react-router-dom";
+import { companiesNameApi } from '../queries/companiesApi'
+import { applicantsNameApi } from '../queries/applicantsApi'
+
 
 function SideBar() {
+  const [companies, setCompanies] = useState([])
+  const [applicants, setApplicants] = useState([])
+
+  async function getData(name) {
+    const dataCompanies= await companiesNameApi(name)
+    const dataApplicants = await applicantsNameApi(name)
+
+    if (dataCompanies && dataCompanies.data) {
+      setCompanies(dataCompanies.data);
+    } else {
+      setCompanies([]);
+    }
+
+    if (dataApplicants && dataApplicants.data) {
+      setApplicants(dataApplicants.data);
+    } else {
+      setApplicants([]);
+    }
+  }
+
+   const cambiarEstado = () =>{
+     window.reloand()
+   }
+
   return (
     <>
       {/* ========== Start MENU ========== */}
       <header className="pb-12 hidden h-auto bg-slate-50 border-r border-stone-300 w-1/5 sm:block">
         {/* ========== Start LOGO ========== */}
-            <Link to="/">
-              <figure className="h-20 flex items-center justify-start m-0 px-4">
-                <div className="hidden lg:block w-10 h-10 rounded-full">
-                  <img
-                    src={image}
-                    alt="Logo Digital House"
-                    className="hidden lg:block w-full h-full object-cover"
-                  />
-                </div>
-                <figcaption className="m-0 p-0 lg:pl-4 text-stone-950 font-bold text-sm">
-                  Digital House
-                </figcaption>
-              </figure>
-            </Link>
+        <Link to="/" onClick={cambiarEstado}  >
+          <figure className="h-20 flex items-center justify-start m-0 px-4">
+            <div className="hidden lg:block w-10 h-10 rounded-full">
+              <img
+                src={image}
+                alt="Logo Digital House"
+                className="hidden lg:block w-full h-full object-cover"
+              />
+            </div>
+            <figcaption className="m-0 p-0 lg:pl-4 text-stone-950 font-bold text-sm">
+              Digital House
+            </figcaption>
+          </figure>
+        </Link>
         {/* ========== End LOGO ========== */}
 
         {/* ========== Start BUSCADOR ========== */}
-        <TopBar />
+        <TopBar handleSearch={getData}  />
         {/* ========== End BUSCADOR ==========  */}
 
         {/* ========== Start LISTADO ========== */}
@@ -96,13 +125,13 @@ function SideBar() {
           </section>
         </nav>
         {/* ========== End LISTADO ========== */}
-        
+
       </header>
 
       <Routes>
-        <Route exact path="/" element={<ContentWrapper />} />
-        <Route path="/Company" element={<Company />} />
-        <Route path="/Applicants" element={<Applicants />} />
+        <Route exact path="/" element={<ContentWrapper  companies = {companies.length > 0 ? companies : null}applicants={applicants.length > 0 ? applicants : null}  />} />
+        <Route path="/Company" element={<Company companies = {companies.length > 0 ? companies : null}/>} />
+        <Route path="/Applicants" element={<Applicants applicants={applicants.length > 0 ? applicants : null}/>} />
         <Route path="/Professions" element={<Professions />} />
         <Route path="/Postulate" element={<Postulate />} />
         <Route path="/Contact" element={<Contact />} />
