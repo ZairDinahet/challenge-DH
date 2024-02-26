@@ -17,34 +17,25 @@ import { applicantsNameApi } from '../queries/applicantsApi'
 function SideBar() {
   const [companies, setCompanies] = useState([])
   const [applicants, setApplicants] = useState([])
-  const [estado , setEstado ] = useState(false)
 
   async function getData(name) {
     const dataCompanies= await companiesNameApi(name)
     const dataApplicants = await applicantsNameApi(name)
 
-    if(!dataCompanies && dataApplicants){
-      setCompanies([])
-      setApplicants(dataApplicants.data)  
-      setEstado(true)
-      
-    }else if(dataCompanies && !dataApplicants){
-      setCompanies(dataCompanies.data )
-      setApplicants([])  
-      setEstado(true)
+    if (dataCompanies && dataCompanies.data) {
+      setCompanies(dataCompanies.data);
+    } else {
+      setCompanies([]);
+    }
 
-    }else if(dataCompanies == undefined || dataApplicants == undefined){
-      setCompanies([])
-      setApplicants([]) 
-      
-    }else{
-      setCompanies(dataCompanies.data )
-      setApplicants(dataApplicants.data)
+    if (dataApplicants && dataApplicants.data) {
+      setApplicants(dataApplicants.data);
+    } else {
+      setApplicants([]);
     }
   }
 
    const cambiarEstado = () =>{
-     setEstado(false)
      window.reloand()
    }
 
@@ -53,7 +44,7 @@ function SideBar() {
       {/* ========== Start MENU ========== */}
       <header className="pb-12 hidden h-auto bg-slate-50 border-r border-stone-300 w-1/5 sm:block">
         {/* ========== Start LOGO ========== */}
-        <Link to="/" onClick={cambiarEstado}>
+        <Link to="/" onClick={cambiarEstado}  >
           <figure className="h-20 flex items-center justify-start m-0 px-4">
             <div className="hidden lg:block w-10 h-10 rounded-full">
               <img
@@ -138,9 +129,9 @@ function SideBar() {
       </header>
 
       <Routes>
-        <Route exact path="/" element={<ContentWrapper  companies={companies} applicants={applicants} estado={estado} />} />
-        <Route path="/Company" element={<Company  companies={companies}  estado={estado}/>} />
-        <Route path="/Applicants" element={<Applicants applicants={applicants}  estado={estado}/>} />
+        <Route exact path="/" element={<ContentWrapper  companies = {companies.length > 0 ? companies : null}applicants={applicants.length > 0 ? applicants : null}  />} />
+        <Route path="/Company" element={<Company companies = {companies.length > 0 ? companies : null}/>} />
+        <Route path="/Applicants" element={<Applicants applicants={applicants.length > 0 ? applicants : null}/>} />
         <Route path="/Professions" element={<Professions />} />
         <Route path="/Postulate" element={<Postulate />} />
         <Route path="/Contact" element={<Contact />} />

@@ -1,9 +1,4 @@
 import ContentRowTop  from './ContentRowTop';
-//import { useEffect, useState } from 'react'
-
-//import NotFound from './NotFound';
-//import {Link, Route, Routes} from 'react-router-dom';
-
 
 function ContentWrapper(props){
 
