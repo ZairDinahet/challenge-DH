@@ -1,7 +1,42 @@
 import foto32 from "../assets/img/foto32.jpg";
 import ImagePreview from "./ImagePreview";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import {applicantssApiForm} from '../queries/applicantsApi';
+import { professionsApi } from '../queries/professions';
 
-function Postulate(props) {
+ 
+function Postulate(props){
+  const [professions, setProfessions] = useState([]);
+  const [resetImage, setResetImage] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const navigate = useNavigate();
+
+  async function fetchData() {
+    const data = await professionsApi();
+    setProfessions(data.data);
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const formData = new FormData(event.target);
+      const response = await applicantssApiForm(formData);
+      navigate("/postulate"); 
+      event.target.reset(); 
+      setResetImage(true);
+      setFormSubmitted(true); 
+      setTimeout(() => {
+        setFormSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+    }
+  };
+   
   return (
     <>
       {/* ========== Start  ========== */}
@@ -20,7 +55,7 @@ function Postulate(props) {
                 <h2 className="text-2xl text-stone-500">
                   Formulario de Postulación
                 </h2>
-                <form action="#" method="POST" encType="multipart/form-data">
+                <form onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
                   <div className="grid grid-cols-1 sm:grid-cols-2">
                     <div className="mb-4">
                       <label
@@ -47,7 +82,7 @@ function Postulate(props) {
                       <input
                         type="text"
                         id="lastname"
-                        name="lastname"
+                        name="lastName"
                         placeholder="Apellido"
                         className="text-stone-950 my-2 h-8 w-3/4 bg-stone-100 rounded-md border border-stone-500 p-2"
                       />
@@ -77,22 +112,22 @@ function Postulate(props) {
                       <input
                         type="text"
                         id="phone"
-                        name="phone"
+                        name="numberPhone"
                         placeholder="Telefono"
                         className="text-stone-950 my-2 h-8 w-3/4 bg-stone-100 rounded-md border border-stone-500 p-2"
                       />
                     </div>
                     <div className="mb-4">
                       <label
-                        htmlFor="linkedin"
+                        htmlFor="linkedIn"
                         className="block text-sm font-medium text-stone-500"
                       >
                         Linkedin
                       </label>
                       <input
                         type="text"
-                        id="linkedin"
-                        name="linkedin"
+                        id="linkedIn"
+                        name="linkedIn"
                         placeholder="Linkedin"
                         className="text-stone-950 my-2 h-8 w-3/4 bg-stone-100 rounded-md border border-stone-500 p-2"
                       />
@@ -106,8 +141,8 @@ function Postulate(props) {
                       </label>
                       <input
                         type="date"
-                        id="birthday"
-                        name="birthday"
+                        id="birthDate"
+                        name="birthDate"
                         className="text-stone-950 my-2 h-8 w-3/4 bg-stone-100 rounded-md border border-stone-500 p-2"
                       />
                     </div>
@@ -141,6 +176,7 @@ function Postulate(props) {
                         className="text-stone-950 my-2 h-8 w-3/4 bg-stone-100 rounded-md border border-stone-500 p-2"
                       />
                     </div>
+          
                     <div className="mb-4">
                       <label
                         htmlFor="aboutme"
@@ -149,11 +185,22 @@ function Postulate(props) {
                         Sobre mi
                       </label>
                       <textarea
-                        name="message"
+                        name="aboutMe"
                         rows="6"
                         placeholder="Sobre mi"
                         className="text-stone-950 my-2 w-3/4 rounded-md border border-stone-500 p-2"
                       ></textarea>
+                    </div>
+                    <div className="text-sm text-stone-500 font-medium block mb-4">
+                      <label
+                        htmlFor="profession"
+                        className="block text-sm font-medium text-stone-500"
+                      >Profesion
+                      </label>
+                      <select name="profession" className="text-stone-700 bg-stone-100 my-2 w-3/4 rounded-md border border-stone-500 p-2">
+                        {professions.map((profession, i) => (
+                      <option key={i} value={profession.id}>{profession.name}</option>))}
+                      </select>
                     </div>
                     <div className="mb-4">
                       <span
@@ -161,26 +208,8 @@ function Postulate(props) {
                       >
                         Foto
                       </span>
-                      <ImagePreview />
+                      <ImagePreview reset={resetImage} />
                     </div>
-                  </div>
-
-                  <div className="mb-4">
-                    <span className="text-sm text-stone-500 font-medium block mb-4">Curriculum</span>
-                    <label
-                      htmlFor="cv"
-                      className="my-4 p-2 relative cursor-pointer bg-stone-100 rounded-md border border-stone-500 font-medium text-stone-500 hover:text-teal-700 focus-within:outline-none focus-within:ring-2"
-                    >
-                      <i className="bi bi-paperclip mr-1"></i>
-                      <span>Adjuntar CV</span>
-                      <input
-                        id="cv"
-                        accept=".pdf"
-                        name="cv"
-                        type="file"
-                        className="sr-only"
-                      />
-                    </label>
                   </div>
                   <div className="mt-4">
                     <button
@@ -190,6 +219,11 @@ function Postulate(props) {
                       Enviar Postulación
                     </button>
                   </div>
+                  {formSubmitted && (
+                  <div className="fixed bottom-0 right-0 mb-4 mr-4 bg-teal-700 text-white py-2 px-4 rounded-md">
+                    Formulario enviado
+                  </div>
+                  )}
                 </form>
               </div>
             </section>

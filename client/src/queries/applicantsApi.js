@@ -13,6 +13,24 @@ export async function applicantsApi(){
     }
   }
 
+  export async function applicantssApiForm(formData){
+    try {    
+      const response = await fetch('http://localhost:8001/applicants', {
+        method: 'POST',
+        body: formData,
+      });
+      if(response.ok){
+        return await response.json();
+      } else {
+        throw new Error(response.statusText);
+      }
+    } catch (error) {
+      throw new Error("Error al realizar la solicitud a la ruta http://localhost:8001/applicants");
+    }
+  }
+  
+
+
   export async function applicantsNameApi(name){
     try {    
       const data = await fetch(`http://localhost:8001/applicants/search/${name}`)
@@ -26,3 +44,4 @@ export async function applicantsApi(){
       console.log(error)
     }
   }
+

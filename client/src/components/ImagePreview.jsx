@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import defaultImage from "../assets/img/blank-image.png";
 
-const ImagePreview = () => {
+const ImagePreview = (props) => {
   const [imagePreview, setImagePreview] = useState(defaultImage);
 
   const handleImageChange = (e) => {
@@ -11,13 +11,17 @@ const ImagePreview = () => {
       reader.onload = (e) => {
         setImagePreview(e.target.result);
       };
-
       reader.readAsDataURL(e.target.files[0]);
     } else {
       setImagePreview(defaultImage);
     }
   };
 
+  useEffect(() => {
+    if (props.reset) {
+      setImagePreview(defaultImage);
+    }
+  }, [props.reset]);
   return (
     <>
       <img
