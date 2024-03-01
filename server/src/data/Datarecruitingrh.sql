@@ -65,3 +65,30 @@ VALUES
     ('Banco Santander Río', 'foto27.png', '9 avisos activos', 'Servicios financieros', 'Buenos Aires'),
     ('Grupo Techint', 'foto28.png', '2 avisos activos', 'Ingenieria y Construccion', 'Buenos Aires'),
     ('Farmacity', 'foto29.png', '8 avisos activos', 'Salud', 'Ciudad Autónoma de Buenos Aires');
+
+insert into users (name, lastName, email, password) 
+values 
+ ('Lilah', 'Hallahan', 'Lilah.Hallahan@gmail.com', '$2a$04$SOR6.8t5Byfpy5ITZ4dN3.tt0UyxZroJc4Baaz4MQKIe28MTB.t/m'),
+ ('Ricki', 'Cudihy', 'Ricki.Cudihy@gmail.com', '$2a$04$y36LQFbdNj64dm8ZEZNrQerOhnpSXAqnFuDSmHWptqLv5tY6GMWxW'),
+ ('Margalit', 'Bettles', 'Margalit.Bettles@gmail.com', '$2a$04$78fU3wB8Uab8sFgQ5Yy81uuz6iQXuYqdR0ZvDEr2lAyV/aY8vZ8Tu'),
+ ('Georgie', 'Dallow', 'Georgie.Dallow@gmail.com', '$2a$04$puu3Eilpjfp9bSuulFNC5eQd4Ekbmq9d4nHo0uIyqmBd5lu5N6iMe'),
+ ('Margaretta', 'Dooley', 'Margaretta.Dooley@gmail.com', '$2a$04$3sz3TG9fBETGsX3FjekXGevtjPi/r/Xgdun52SxvLTgTbtyKSNHRm'),
+ ('Barnett', 'Eagling', 'Barnett.Eagling@gmail.com', '$2a$04$0i5/zn.Fau.l8COOaX/Ewu8OMlWuwr7Jup5w3q/vodehhGI8HEwme'),
+ ('Glenda', 'Gleeton', 'Glenda.Gleeton@gmail.com', '$2a$04$LlWB.mLIVLlTtJvF9TobTupi67KK/XSWKVHgIXr6fsYUj1eE77zti'),
+ ('Shepperd', 'Birch', 'Shepperd.Birch@gmail.com', '$2a$04$zt//X.GMr4hIhatvucoBHeNgSWdaX.SllYfpcuS.6h2wnI1ilUf6q'),
+ ('Carissa', 'Piletic', 'Carissa.Piletic@gmail.com', '$2a$04$ZL0HaMMSidYxZ7oB2akAJenEvV/X6qN0qV1afkxOGQlBmHgQuWSkW'),
+ ('Perceval', 'Wheadon', 'Perceval.Wheadon@gmail.com', '$2a$04$gXq4rwuBl5IPXnS4CoCjxOC664o4FlN8g9RJ6NXnIttHJV2IyeM2y');
+
+ insert into users (email, password) 
+values 
+ ('Ricki.Cudihy@gmail.com', '$2a$04$y36LQFbdNj64dm8ZEZNrQerOhnpSXAqnFuDSmHWptqLv5tY6GMWxW'),
+ ('Lilah.Hallahan@gmail.com', '$2a$04$SOR6.8t5Byfpy5ITZ4dN3.tt0UyxZroJc4Baaz4MQKIe28MTB.t/m'),
+ ('Margalit.Bettles@gmail.com', '$2a$04$78fU3wB8Uab8sFgQ5Yy81uuz6iQXuYqdR0ZvDEr2lAyV/aY8vZ8Tu'),
+ ('Georgie.Dallow@gmail.com', '$2a$04$puu3Eilpjfp9bSuulFNC5eQd4Ekbmq9d4nHo0uIyqmBd5lu5N6iMe'),
+ ('Margaretta.Dooley@gmail.com', '$2a$04$3sz3TG9fBETGsX3FjekXGevtjPi/r/Xgdun52SxvLTgTbtyKSNHRm'),
+ ('Barnett.Eagling@gmail.com', '$2a$04$0i5/zn.Fau.l8COOaX/Ewu8OMlWuwr7Jup5w3q/vodehhGI8HEwme'),
+ ('Glenda.Gleeton@gmail.com', '$2a$04$LlWB.mLIVLlTtJvF9TobTupi67KK/XSWKVHgIXr6fsYUj1eE77zti'),
+ ('Shepperd.Birch@gmail.com', '$2a$04$zt//X.GMr4hIhatvucoBHeNgSWdaX.SllYfpcuS.6h2wnI1ilUf6q'),
+ ('Carissa.Piletic@gmail.com', '$2a$04$ZL0HaMMSidYxZ7oB2akAJenEvV/X6qN0qV1afkxOGQlBmHgQuWSkW'),
+ ('perceval@gmail.com', '$2b$10$T4CxVTalVWuh5tlvwJpAbOEp0pbByYqQCFUe.9xXO9AvMknz4YYUm');  /*1234*/
+ 

@@ -68,7 +68,6 @@ module.exports = {
     //Aplico la referencia a la imagen del aplicante
     const file = req.file;
     dataCreate.image = file?.filename
-    console.log("dataCreate", dataCreate)
     const data = await Applicant.create(dataCreate);
     await data.addProfession(dataProfession)
     return data;
