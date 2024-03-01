@@ -38,13 +38,20 @@ module.exports = {
       return data;
     }
   },
-  getOneName: async (name) => {
-    console.log(name);
+  getOneName: async (nameFull) => {
     const data = await Applicant.findAll({
       where: {
-        name: {
-          [Op.like]: `%${name}%`
-        }
+        [Op.or]:[
+          { name: {
+              [Op.like]: `${nameFull}%`
+            }
+          },
+          {
+            lastName: {
+              [Op.like]: `${nameFull}%`
+            }
+          }
+        ]
       },
       include: [{
         model: Profession,

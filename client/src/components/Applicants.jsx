@@ -22,7 +22,6 @@ function Applicants(props) {
       {/* ========== Start ASPIRANTES ========== */}
       {props.isMobileMenuOpen ?  null:
       <div className="p-12 overflow-auto w-full">
-
         <section>
           <h2 className="text-3xl text-teal-700">Aspirantes</h2>
           <article className="p-0 grid xl:grid-cols-3 xl:gap-8 sm:grid-cols-2 sm:gap-4">

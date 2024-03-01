@@ -24,8 +24,8 @@ const getOneApplicant = async (req, res) => {
   response(res, req, 200, applicant)
 }
 const getOneApplicantName = async (req, res) => {
-  const { name } = req.params;
-  const applicant = await Applicants.getOneName(name);
+  const { nameFull } = req.params;
+  const applicant = await Applicants.getOneName(nameFull);
   response(res, req, 200, applicant)
 }
 
